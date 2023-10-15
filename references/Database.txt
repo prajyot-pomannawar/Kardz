@@ -1,0 +1,13 @@
+Customer ID - INT - Auto Increment - Primary Key
+Cover Photo URL - VARCHAR - 1024 - not null
+Profile Photo URL - VARCHAR - 1024 - not null
+Full Name - VARCHAR - 60 - not null
+Designation - VARCHAR - 60 - not null
+About Info - VARCHAR - 1024 - not null
+Mob No - VARCHAR - 12 - not null Unique
+email id - VARCHAR - 40 - not null Unique
+Address - VARCHAR - 256 - not null
+Website - VARCHAR - 512
+Instagram ID - VARCHAR - 512 - Unique
+Whatsapp Number - VARCHAR - 12 - not null Unique
+Registered On - DATETIME - not null

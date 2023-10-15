@@ -1,0 +1,207 @@
+Username: prajyot-pomannawar
+Token: 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
+Generated on 15th Oct 23 - 90 Days expiry
+=======================================================================================================
+Java code for sending custom generated email: this is for Connect Option. 
+Email will go from CardComet email id to the person who is viewing the businessman's card and want to connect
+
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+public class SendEmail {
+    public static void main(String[] args) {
+        final String username = "your_email@gmail.com"; // Your email address
+        final String password = "your_password"; // Your email password
+        String to = "recipient@example.com"; // Recipient's email address
+
+        // Set the properties for the email server
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com"); // Change this to your email provider's SMTP server
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "587"); // Use the appropriate port for your email provider
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Create a session with authentication
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            // Create a new MimeMessage
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Custom Email Subject");
+            message.setText("Dear <<Name>>,\nThis is <<Business person name>>.\nI would like to thank you for connecting with me.\nLet me brief you about myself: <<businessman's about info>>.\n Please visit my Kardz.com profile for more information <<Link of Kardz page>>.\n");
+
+            // Send the message
+            Transport.send(message);
+
+            System.out.println("Email sent successfully!");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}
+=======================================================================================================
+Whatsapp Link to any mobile Number: https://wa.me/1234567890
+
+=======================================================================================================
+Java code to generate a QR code with expiry date:
+import net.glxn.qrgen.core.image.ImageType;
+import net.glxn.qrgen.javase.QRCode;
+import net.glxn.qrgen.javase.QRCodeBuilder;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class QRCodeGenerator {
+    public static void main(String[] args) {
+        String data = "https://example.com"; // Main data to be encoded
+        int daysValid = 30; // Number of days the QR code is valid
+
+        // Calculate the expiry date
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date expiryDate = new Date(currentDate.getTime() + daysValid * 24 * 60 * 60 * 1000L);
+
+        // Format the data with the expiry date
+        String dataWithExpiry = data + "|" + dateFormat.format(expiryDate);
+
+        // Generate the QR code
+        QRCodeBuilder builder = QRCode.from(dataWithExpiry)
+                .withSize(250, 250) // Set the QR code size
+                .to(ImageType.PNG); // Specify the image type
+
+        File qrFile = builder.file(); // Create the QR code as a file
+
+        // Save the QR code as an image
+        try {
+            builder.writeTo(new File("qr_code.png"));
+            System.out.println("QR code generated successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+=======================================================================================================
+Python code to create a QR code with expiry date:
+
+pip install qrcode[pil]
+
+
+import qrcode
+from datetime import datetime, timedelta
+
+# Define the URL and expiry date
+url = "https://example.com"
+expiry_date = datetime.now() + timedelta(days=7)  # URL expires in 7 days
+
+# Convert the expiry date to a string in a specific format (e.g., YYYY-MM-DD)
+expiry_date_str = expiry_date.strftime("%Y-%m-%d")
+
+# Combine the URL and expiry date in a format you prefer
+data = f"{url}?expires={expiry_date_str}"
+
+# Generate the QR code
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(data)
+qr.make(fit=True)
+
+# Create a QR code image
+img = qr.make_image(fill_color="black", back_color="white")
+
+# Save the QR code image to a file
+img.save("qr_code.png")
+=======================================================================================================
+Steps to deploy the webpages free:
+
+Prerequisites:
+
+A working React application that you want to deploy.
+A GitHub account.
+A Netlify account.
+Deployment Steps:
+
+Push Your React App to GitHub:
+
+Create a new GitHub repository for your React app if it's not already on GitHub.
+Initialize a Git repository in your React project directory if you haven't already.
+Add your project files to the Git repository, commit them, and push to your GitHub repository.
+Configure Netlify:
+
+Log in to your Netlify account.
+Click the "New site from Git" button.
+Authorize Netlify to access your GitHub repositories.
+Select the GitHub repository where your React app is hosted.
+Configure your build settings:
+Specify the build command for your React app (e.g., npm run build).
+Set the publish directory to the location where your build files are stored (e.g., build).
+Click the "Deploy Site" button.
+Automated Deployment:
+
+Netlify will automatically build and deploy your React app.
+Netlify will provide you with a unique URL where your app is hosted.
+Custom Domain (Optional):
+
+If you want to use a custom domain for your React app, configure it in the Netlify settings.
+Netlify provides an easy way to set up custom domains and SSL certificates.
+Continuous Deployment (Optional):
+
+Set up continuous deployment to automate the process whenever you push changes to your GitHub repository.
+Netlify will automatically rebuild and redeploy your app when you make updates to the code.
+Your dynamic React app is now deployed using GitHub and Netlify. You can share your app with others using the provided Netlify URL or your custom domain if you've configured one. Whenever you push changes to your GitHub repository, Netlify will automatically update and redeploy your app, ensuring it stays up to date.
+=======================================================================================================
+In spring boot application: create a call link so that mobile number will be a clickable link and it will open in user's phonebook / dialer
+
+If you're creating a web application using Java Spring and Hibernate and you want to allow users to open a mobile number in their phone book, you can achieve this by generating a clickable link with a tel: protocol. This link will prompt the user's device to open the phone book or dialer application with the specified number pre-filled.
+
+Here's how you can do it in a Java Spring web application:
+
+Create an HTML link in your view or template with the tel: protocol. You can include the phone number as a variable from your server-side code:
+<a href="tel:${phoneNumber}">Call</a>
+
+In your Java Spring controller, make sure you have a model attribute (e.g., phoneNumber) available for your view. You can retrieve this value from your database using Hibernate or any other data source.
+Here's an example of how you might set up your Spring controller:
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class YourController {
+
+    @GetMapping("/your-page")
+    public String yourPage(Model model) {
+        // Retrieve the phone number from your data source using Hibernate or other methods
+        String phoneNumber = "9552566838"; // Replace with the actual phone number
+
+        // Add the phone number to the model
+        model.addAttribute("phoneNumber", phoneNumber);
+
+        // Return the view
+        return "your-view"; // Replace with the actual view name
+    }
+}
+
+When the user clicks the "Call" link on your web page, their device's operating system will handle the tel: protocol, allowing them to open the phone book or dialer application with the provided phone number.
+This approach doesn't require any specific Java Spring or Hibernate functionality but is a standard HTML link that leverages the device's built-in capabilities to open the phone book or dialer app.
+
+=======================================================================================================
