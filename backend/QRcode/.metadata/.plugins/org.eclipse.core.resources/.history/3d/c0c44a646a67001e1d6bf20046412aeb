@@ -1,0 +1,34 @@
+package com.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.dao.CustomerInformationDao;
+import com.app.dto.CustomerInfoRequestDTO;
+import com.app.dto.CustomerInfoResponseDTO;
+import com.app.entities.CardComet;
+
+public class CustomerServiceImpl implements CustomerService{
+	
+	@Autowired
+	private CustomerInformationDao customerInformationDao;
+
+	// Add Customer Profile Details
+	@Override
+	public CustomerInfoResponseDTO addCustomerProfile(CustomerInfoRequestDTO request, Long customerId) {
+		
+		SignUpDetails signUpDetails = userDao.findById(custId).orElseThrow(()-> new ResourceNotFoundException("Invalid UserId from CustomerServiceImpl"));
+		
+		CardComet customerPersonalDetails = new CardComet();
+		customerPersonalDetails.setCustomerFullName(request.getCustomerFullName());	          
+		
+		
+		CustomerPersonalDetails  persistentCust=custPDetailsDao.save(mapper.map(customerPersonalDetails, CustomerPersonalDetails.class));
+		return mapper.map(persistentCust, AddProfileResponseDTO.class);
+	
+	}
+	
+}
+
+
+
+

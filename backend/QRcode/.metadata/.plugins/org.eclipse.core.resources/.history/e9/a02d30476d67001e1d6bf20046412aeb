@@ -1,0 +1,10 @@
+package com.app.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.app.entities.CardComet;
+
+public interface CustomerInformationDao extends JpaRepository<CardComet,Long>{
+
+		CardComet findByCustomerId(int customerId);
+}

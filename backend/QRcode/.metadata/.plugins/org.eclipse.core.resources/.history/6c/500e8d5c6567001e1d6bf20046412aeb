@@ -1,0 +1,47 @@
+package com.app.dto;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class SignUpRequestDTO {
+	
+	private String customerFullName;
+	
+	private String customerDesignation;
+	
+	private String customerInformation;
+
+	private String customerMobileNumer;
+	
+	private String customerMailId;
+	
+	private String customerAddress;
+	
+	private String customerWebsite;
+	
+	private String customerInstagramId;
+	
+	private String customerWhatsappNumber;
+
+	private String urlCoverPhoto;
+	
+	private String urlProfilePhoto;
+
+	private LocalDate registerDate;
+}

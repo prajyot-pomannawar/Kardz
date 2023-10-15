@@ -1,0 +1,66 @@
+package com.app.entities;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Entity
+@Table(name="batting_career")
+public class BattingCareer {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="customer_id")
+	private int customerId;
+	
+	@Column(name="customer_full_name",length = 60, nullable = false)
+	private String customerFullName;
+	
+	@Column(name="customer_designation",length = 60, nullable = false)
+	private String customerDesignation;
+	
+	@Column(name="customer_information",length = 1024, nullable = false)
+	private String customerInformation;
+	
+	@Column(name="customer_mobile_number",length = 12, nullable = false)
+	private String customerMobileNumer;
+	
+	private String customerMailId;
+	
+	private String customerAddress;
+	
+	private String customerWebsite;
+	
+	private String customerInstagramId;
+	
+	private String customerWhatsappNumber;
+	
+	private String urlCoverPhoto;
+	
+	private String urlProfilePhoto;
+	
+	private LocalDate registerDate;
+	
+	
+}

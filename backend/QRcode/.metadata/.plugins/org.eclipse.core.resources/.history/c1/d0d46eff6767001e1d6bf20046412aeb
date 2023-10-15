@@ -1,0 +1,43 @@
+package com.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.dao.CustomerInformationDao;
+import com.app.dto.CustomerInfoResponseDTO;
+
+public class CustomerServiceImpl implements CustomerService{
+	
+	@Autowired
+	private CustomerInformationDao customerInformationDao;
+
+	// Add Customer Profile Details
+	@Override
+	public CustomerInfoResponseDTO addCustomerProfile(AddProfileRequestDTO request, Long custId) {
+		
+		SignUpDetails signUpDetails = userDao.findById(custId).orElseThrow(()-> new ResourceNotFoundException("Invalid UserId from CustomerServiceImpl"));
+		
+		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails();
+		customerPersonalDetails.setCustFirstName(request.getCustFirstName());
+		customerPersonalDetails.setCustLastName(request.getCustLastName());
+		customerPersonalDetails.setCustPanNo(request.getCustPanNo());
+		customerPersonalDetails.setCustGender(request.getCustGender());
+		customerPersonalDetails.setCustMaritalStatus(request.getCustMaritalStatus());
+		customerPersonalDetails.setCustOccupation(request.getCustOccupation());
+		customerPersonalDetails.setCustAddress(request.getCustAddress());
+		customerPersonalDetails.setCustState(request.getCustState());
+		customerPersonalDetails.setCustPinCode(request.getCustPinCode());
+		customerPersonalDetails.setCustDOB(request.getCustDOB());
+		customerPersonalDetails.setSignUpDetails(signUpDetails);
+		customerPersonalDetails.setUrlOfImage(request.getUrlOfImage());
+		
+		
+		CustomerPersonalDetails  persistentCust=custPDetailsDao.save(mapper.map(customerPersonalDetails, CustomerPersonalDetails.class));
+		return mapper.map(persistentCust, AddProfileResponseDTO.class);
+	
+	}
+	
+}
+
+
+
+

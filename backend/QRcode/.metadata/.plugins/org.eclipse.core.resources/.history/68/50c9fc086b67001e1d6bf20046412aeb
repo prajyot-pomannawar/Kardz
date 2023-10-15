@@ -1,0 +1,44 @@
+package com.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.dao.CustomerInformationDao;
+import com.app.dto.CustomerInfoRequestDTO;
+import com.app.dto.CustomerInfoResponseDTO;
+import com.app.entities.CardComet;
+
+public class CustomerServiceImpl implements CustomerService{
+	
+	@Autowired
+	private CustomerInformationDao customerInformationDao;
+
+	// Add Customer Profile Details
+	@Override
+	public CustomerInfoResponseDTO addCustomerProfile(CustomerInfoRequestDTO request, Long customerId) {
+		
+		SignUpDetails signUpDetails = userDao.findById(custId).orElseThrow(()-> new ResourceNotFoundException("Invalid UserId from CustomerServiceImpl"));
+		
+		CardComet customerPersonalDetails = new CardComet();
+		customerPersonalDetails.setCustomerFullName(request.getCustomerFullName());	          
+		customerPersonalDetails.setCustomerAddress(request.getCustomerAddress());
+		customerPersonalDetails.setCustomerDesignation(request.getCustomerDesignation());
+		customerPersonalDetails.setCustomerInformation(request.getCustomerInformation());
+		customerPersonalDetails.setCustomerMailId(request.getCustomerMailId());
+		customerPersonalDetails.setCustomerMobileNumer(request.getCustomerMobileNumer());
+		customerPersonalDetails.setCustomerWebsite(request.getCustomerWebsite());
+		customerPersonalDetails.setCustomerInstagramId(request.getCustomerInstagramId());
+		customerPersonalDetails.setCustomerWhatsappNumber(request.getCustomerWhatsappNumber());
+		customerPersonalDetails.setRegisterDate(request.getRegisterDate());
+		customerPersonalDetails.setUrlCoverPhoto(request.getUrlCoverPhoto());
+		customerPersonalDetails.setUrlProfilePhoto(request.getUrlProfilePhoto());
+		
+		CustomerPersonalDetails  persistentCust=custPDetailsDao.save(mapper.map(customerPersonalDetails, CustomerPersonalDetails.class));
+		return mapper.map(persistentCust, AddProfileResponseDTO.class);
+	
+	}
+	
+}
+
+
+
+

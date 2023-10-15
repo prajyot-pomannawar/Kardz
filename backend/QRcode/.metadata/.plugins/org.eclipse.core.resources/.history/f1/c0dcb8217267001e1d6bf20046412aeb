@@ -1,0 +1,14 @@
+package com.app.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.dto.CustomerInfoRequestDTO;
+import com.app.dto.CustomerInfoResponseDTO;
+
+@Service
+@Transactional
+public interface CustomerService{
+	
+	CustomerInfoResponseDTO addCustomerProfile(CustomerInfoRequestDTO request, Long customerId) ;
+}

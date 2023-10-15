@@ -1,0 +1,16 @@
+/* CSS */
+.buttons-download {
+  display: flex;
+  justify-content: space-between; /* Add spacing between buttons */
+}
+
+.btn-light-green {
+  background-color: rgb(38, 236, 38) !important; /* Set the background color to light green */
+  color: black; /* Set the text color to black, adjust as needed */
+}
+
+.btn-light-blue {
+  background-color: rgb(172, 170, 173) !important; /* Set the background color to light green */
+  color: black; /* Set the text color to black, adjust as needed */
+}
+/* Rest of your CSS styles for other elements */
